@@ -1,0 +1,1912 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Felix Engineering Motors - Premium Auto Repair Services</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+    <style>
+      :root {
+        --primary: #e63946;
+        --secondary: #f1faee;
+        --dark: #1d3557;
+        --light: #ffffff;
+        --accent: #a8dadc;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
+
+      body {
+        background-color: var(--secondary);
+        color: var(--dark);
+        overflow-x: hidden;
+      }
+
+      /* Glassmorphism effect */
+      .glass {
+        background: rgba(255, 255, 255, 0.2);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border-radius: 10px;
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
+      }
+
+      /* Header Styles */
+      header {
+        background: linear-gradient(135deg, var(--dark), var(--primary));
+        color: var(--light);
+        padding: 1rem 2rem;
+        position: fixed;
+        width: 100%;
+        z-index: 1000;
+        transition: all 0.3s ease;
+      }
+
+      .header-scrolled {
+        padding: 0.5rem 2rem;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+      }
+
+      .header-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .logo-container {
+        display: flex;
+        align-items: center;
+      }
+
+      .logo-container img {
+        height: 50px;
+        margin-right: 10px;
+        transition: all 0.3s ease;
+      }
+
+      .header-scrolled .logo-container img {
+        height: 100px;
+      }
+
+      .logo-text {
+        font-size: 1.5rem;
+        font-weight: 700;
+      }
+
+      .logo-text span {
+        color: var(--primary);
+      }
+
+      /* Navigation */
+      nav ul {
+        display: flex;
+        list-style: none;
+      }
+
+      nav ul li {
+        margin-left: 2rem;
+        position: relative;
+      }
+
+      nav ul li a {
+        color: var(--light);
+        text-decoration: none;
+        font-weight: 500;
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+      }
+
+      nav ul li a:hover {
+        color: var(--accent);
+      }
+
+      nav ul li a i {
+        margin-right: 5px;
+      }
+
+      /* Dropdown menu */
+      .dropdown {
+        position: relative;
+      }
+
+      .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: var(--light);
+        min-width: 200px;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        z-index: 1;
+        border-radius: 5px;
+        top: 100%;
+        left: 0;
+      }
+
+      .dropdown:hover .dropdown-content {
+        display: block;
+        animation: fadeIn 0.3s ease;
+      }
+
+      .dropdown-content a {
+        color: var(--dark);
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+        transition: all 0.3s ease;
+      }
+
+      .dropdown-content a:hover {
+        background-color: var(--accent);
+        color: var(--dark);
+      }
+
+      /* Mobile menu */
+      .mobile-menu-btn {
+        display: none;
+        background: none;
+        border: none;
+        color: var(--light);
+        font-size: 1.5rem;
+        cursor: pointer;
+      }
+
+      /* Hero Section */
+      .hero {
+        height: 100vh;
+        background: url("https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1283&q=80")
+          no-repeat center center/cover;
+        display: flex;
+        align-items: center;
+        position: relative;
+        padding-top: 80px;
+      }
+
+      .hero::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.6);
+      }
+
+      .hero-content {
+        position: relative;
+        z-index: 1;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 2rem;
+        color: var(--light);
+        width: 100%;
+      }
+
+      .hero-content h1 {
+        font-size: 3.5rem;
+        margin-bottom: 1rem;
+        text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+      }
+
+      .hero-content p {
+        font-size: 1.2rem;
+        margin-bottom: 2rem;
+        max-width: 600px;
+        text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+      }
+
+      .btn {
+        display: inline-block;
+        padding: 12px 30px;
+        background-color: var(--primary);
+        color: var(--light);
+        text-decoration: none;
+        border-radius: 30px;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        border: none;
+        cursor: pointer;
+        box-shadow: 0 5px 15px rgba(230, 57, 70, 0.4);
+      }
+
+      .btn:hover {
+        background-color: var(--dark);
+        transform: translateY(-3px);
+        box-shadow: 0 8px 20px rgba(230, 57, 70, 0.6);
+      }
+
+      .btn-outline {
+        background-color: transparent;
+        border: 2px solid var(--light);
+        margin-left: 15px;
+      }
+
+      .btn-outline:hover {
+        background-color: var(--light);
+        color: var(--dark);
+      }
+
+      /* Services Section */
+      .section {
+        padding: 5rem 2rem;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .section-title {
+        text-align: center;
+        margin-bottom: 3rem;
+        position: relative;
+      }
+
+      .section-title h2 {
+        font-size: 2.5rem;
+        color: var(--dark);
+        margin-bottom: 1rem;
+      }
+
+      .section-title p {
+        color: #666;
+        max-width: 700px;
+        margin: 0 auto;
+      }
+
+      .section-title::after {
+        content: "";
+        display: block;
+        width: 80px;
+        height: 4px;
+        background-color: var(--primary);
+        margin: 1rem auto;
+      }
+
+      .services-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+      }
+
+      .service-card {
+        background-color: var(--light);
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+        padding: 2rem;
+        text-align: center;
+      }
+
+      .service-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+      }
+
+      .service-icon {
+        font-size: 3rem;
+        color: var(--primary);
+        margin-bottom: 1.5rem;
+        display: inline-block;
+      }
+
+      .service-card h3 {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+        color: var(--dark);
+      }
+
+      .service-card p {
+        color: #666;
+        margin-bottom: 1.5rem;
+      }
+
+      /* About Section */
+      .about {
+        background-color: var(--light);
+      }
+
+      .about-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 3rem;
+        align-items: center;
+      }
+
+      .about-image {
+        position: relative;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      }
+
+      .about-image img {
+        width: 100%;
+        height: auto;
+        display: block;
+        transition: all 0.5s ease;
+      }
+
+      .about-image:hover img {
+        transform: scale(1.05);
+      }
+
+      .about-content h2 {
+        font-size: 2.5rem;
+        margin-bottom: 1.5rem;
+        color: var(--dark);
+      }
+
+      .about-content p {
+        margin-bottom: 1.5rem;
+        color: #666;
+        line-height: 1.6;
+      }
+
+      .stats {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1rem;
+        margin-top: 2rem;
+      }
+
+      .stat-item {
+        text-align: center;
+        padding: 1.5rem;
+        border-radius: 5px;
+        background-color: var(--secondary);
+      }
+
+      .stat-item h3 {
+        font-size: 2.5rem;
+        color: var(--primary);
+        margin-bottom: 0.5rem;
+      }
+
+      .stat-item p {
+        color: var(--dark);
+        font-weight: 500;
+      }
+
+      /* CEO Section - Redesigned */
+      .ceo-section {
+        background: linear-gradient(135deg, var(--dark), var(--primary));
+        color: var(--light);
+        padding: 5rem 2rem;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .ceo-section::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 L0,100 Z" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/></svg>');
+        background-size: 50px 50px;
+        opacity: 0.3;
+      }
+
+      .ceo-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 3rem;
+        align-items: center;
+        position: relative;
+        z-index: 1;
+      }
+
+      .ceo-image {
+        position: relative;
+        border-radius: 50%;
+        width: 350px;
+        height: 350px;
+        margin: 0 auto;
+        overflow: hidden;
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+        transition: all 0.5s ease;
+        border: 5px solid rgba(255, 255, 255, 0.2);
+      }
+
+      .ceo-image:hover {
+        transform: scale(1.05);
+        box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
+      }
+
+      .ceo-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: all 0.5s ease;
+      }
+
+      .ceo-content {
+        position: relative;
+        padding: 2rem;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 20px;
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+      }
+
+      .ceo-content h2 {
+        font-size: 2.5rem;
+        margin-bottom: 1.5rem;
+        color: var(--light);
+        text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+      }
+
+      .ceo-content p {
+        margin-bottom: 1.5rem;
+        line-height: 1.8;
+        font-size: 1.1rem;
+        font-style: italic;
+      }
+
+      .ceo-signature {
+        margin-top: 2rem;
+        font-style: normal;
+        font-weight: 600;
+        font-size: 1.2rem;
+      }
+
+      .ceo-signature p:first-child {
+        font-size: 1.4rem;
+        margin-bottom: 0.5rem;
+      }
+
+      .ceo-social {
+        display: flex;
+        gap: 1rem;
+        margin-top: 2rem;
+      }
+
+      .ceo-social a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 45px;
+        height: 45px;
+        border-radius: 50%;
+        background-color: rgba(255, 255, 255, 0.2);
+        color: var(--light);
+        transition: all 0.3s ease;
+        font-size: 1.2rem;
+      }
+
+      .ceo-social a:hover {
+        background-color: var(--light);
+        color: var(--primary);
+        transform: translateY(-5px);
+      }
+
+      /* Team Section - Redesigned */
+      .team {
+        background-color: var(--secondary);
+        padding: 5rem 2rem;
+      }
+
+      .team-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        text-align: center;
+      }
+
+      .team-image {
+        width: 100%;
+        max-width: 900px;
+        height: 500px;
+        margin: 0 auto 3rem;
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        position: relative;
+      }
+
+      .team-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: all 0.5s ease;
+      }
+
+      .team-image:hover img {
+        transform: scale(1.05);
+      }
+
+      .team-content {
+        max-width: 800px;
+        margin: 0 auto;
+      }
+
+      .team-content h2 {
+        font-size: 2.5rem;
+        margin-bottom: 1.5rem;
+        color: var(--dark);
+      }
+
+      .team-content p {
+        color: #666;
+        line-height: 1.8;
+        margin-bottom: 2rem;
+      }
+
+      .team-stats {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 1.5rem;
+        margin-top: 3rem;
+      }
+
+      .team-stat {
+        background-color: var(--light);
+        padding: 1.5rem;
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        transition: all 0.3s ease;
+      }
+
+      .team-stat:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+      }
+
+      .team-stat h3 {
+        font-size: 2.5rem;
+        color: var(--primary);
+        margin-bottom: 0.5rem;
+      }
+
+      .team-stat p {
+        color: var(--dark);
+        font-weight: 500;
+        margin-bottom: 0;
+      }
+
+      /* Modified Contact Form Styles */
+      .contact-container {
+        align-items: start; /* Align items at the top */
+      }
+
+      .contact-form {
+        height: fit-content;
+        padding: 1.5rem !important;
+        margin-top: 0;
+        align-self: center; /* Center vertically with contact info */
+      }
+
+      .form-group {
+        margin-bottom: 1rem; /* Reduced spacing between fields */
+      }
+
+      .form-group input,
+      .form-group select {
+        padding: 10px !important; /* Slightly smaller padding */
+        font-size: 0.9rem !important;
+      }
+
+      .form-group textarea {
+        min-height: 120px !important; /* Fixed smaller height */
+        max-height: 120px; /* Prevent from expanding too much */
+        overflow-y: auto !important; /* Add scroll when needed */
+        resize: vertical; /* Allow vertical resize only */
+        padding: 10px !important;
+        font-size: 0.9rem !important;
+      }
+
+      .contact-info {
+        gap: 1rem; /* Reduced gap between contact items */
+      }
+
+      .contact-item {
+        margin-bottom: 0.5rem; /* Reduced spacing */
+      }
+
+      @media (max-width: 768px) {
+        .contact-container {
+          grid-template-columns: 1fr;
+          gap: 1.5rem;
+        }
+
+        .contact-form {
+          width: 100%;
+          margin-top: 1rem;
+        }
+      }
+
+      /* Charity Preview Section */
+      .charity-preview {
+        background-color: var(--light);
+      }
+
+      .charity-cards {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1.5rem;
+        max-width: 900px;
+        margin: 0 auto;
+      }
+
+      .charity-card {
+        padding: 1.5rem;
+        text-align: center;
+        transition: transform 0.3s ease;
+      }
+
+      .charity-card:hover {
+        transform: translateY(-5px);
+      }
+
+      .charity-card i {
+        font-size: 2.5rem;
+        color: var(--primary);
+        margin-bottom: 1rem;
+      }
+
+      .charity-card h3 {
+        margin-bottom: 0.8rem;
+        color: var(--dark);
+      }
+
+      .charity-card p {
+        color: #666;
+        font-size: 0.9rem;
+      }
+
+      .charity-btn {
+        background-color: var(--dark);
+      }
+
+      .charity-btn:hover {
+        background-color: var(--primary);
+      }
+
+      @media (max-width: 600px) {
+        .charity-cards {
+          grid-template-columns: 1fr;
+        }
+      }
+      /* Contact Section */
+      .contact {
+        background-color: var(--secondary);
+      }
+
+      .contact-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 3rem;
+      }
+
+      .contact-info {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+      }
+
+      .contact-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 1rem;
+      }
+
+      .contact-icon {
+        font-size: 1.5rem;
+        color: var(--primary);
+        margin-top: 5px;
+      }
+
+      .contact-details h3 {
+        font-size: 1.2rem;
+        margin-bottom: 0.5rem;
+        color: var(--dark);
+      }
+
+      .contact-details p,
+      .contact-details a {
+        color: #666;
+        text-decoration: none;
+        transition: all 0.3s ease;
+      }
+
+      .contact-details a:hover {
+        color: var(--primary);
+      }
+
+      .contact-form {
+        background-color: var(--light);
+        padding: 2rem;
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      .form-group {
+        margin-bottom: 1.5rem;
+      }
+
+      .form-group label {
+        display: block;
+        margin-bottom: 0.5rem;
+        font-weight: 500;
+        color: var(--dark);
+      }
+
+      .form-group input,
+      .form-group textarea {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        font-size: 1rem;
+        transition: all 0.3s ease;
+      }
+
+      .form-group input:focus,
+      .form-group textarea:focus {
+        border-color: var(--primary);
+        outline: none;
+        box-shadow: 0 0 0 3px rgba(230, 57, 70, 0.2);
+      }
+
+      .form-group textarea {
+        min-height: 150px;
+        resize: vertical;
+      }
+
+      /* Compact Form Styles */
+      .compact-form {
+        padding: 1rem !important;
+        max-height: 400px;
+      }
+
+      .form-row {
+        display: flex;
+        gap: 1rem;
+        margin-bottom: 0.8rem;
+      }
+
+      .half-width {
+        flex: 1;
+        min-width: 0;
+      }
+
+      .compact-select,
+      .compact-textarea,
+      .compact-form input {
+        padding: 8px 10px !important;
+        font-size: 0.85rem !important;
+        border-radius: 6px !important;
+      }
+
+      .compact-textarea {
+        height: 80px !important;
+        min-height: 80px !important;
+        overflow-y: auto;
+        resize: vertical;
+      }
+
+      .compact-btn {
+        padding: 8px 20px !important;
+        font-size: 0.9rem !important;
+        margin-top: 0.5rem;
+      }
+
+      .form-group {
+        margin-bottom: 0.8rem !important;
+      }
+
+      label {
+        font-size: 0.85rem !important;
+        margin-bottom: 0.3rem !important;
+      }
+
+      @media (max-width: 600px) {
+        .form-row {
+          flex-direction: column;
+          gap: 0.8rem;
+        }
+
+        .half-width {
+          width: 100%;
+        }
+      }
+
+      /* Map Section */
+      .map-section {
+        padding: 0;
+        height: 500px;
+      }
+
+      .map-container {
+        width: 100%;
+        height: 100%;
+      }
+
+      .map-container iframe {
+        width: 100%;
+        height: 100%;
+        border: none;
+      }
+
+      /* Footer */
+      footer {
+        background-color: var(--dark);
+        color: var(--light);
+        padding: 3rem 2rem 1.5rem;
+      }
+
+      .footer-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 2rem;
+        margin-bottom: 2rem;
+      }
+
+      .footer-col h3 {
+        font-size: 1.3rem;
+        margin-bottom: 1.5rem;
+        position: relative;
+        padding-bottom: 10px;
+      }
+
+      .footer-col h3::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 50px;
+        height: 2px;
+        background-color: var(--primary);
+      }
+
+      .footer-col p {
+        margin-bottom: 1rem;
+        line-height: 1.6;
+        color: #bbb;
+      }
+
+      .footer-links {
+        list-style: none;
+      }
+
+      .footer-links li {
+        margin-bottom: 0.8rem;
+      }
+
+      .footer-links a {
+        color: #bbb;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+      }
+
+      .footer-links a:hover {
+        color: var(--primary);
+        transform: translateX(5px);
+      }
+
+      .footer-links a i {
+        margin-right: 8px;
+      }
+
+      .footer-social {
+        display: flex;
+        gap: 1rem;
+        margin-top: 1.5rem;
+      }
+
+      .footer-social a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background-color: rgba(255, 255, 255, 0.1);
+        color: var(--light);
+        transition: all 0.3s ease;
+      }
+
+      .footer-social a:hover {
+        background-color: var(--primary);
+        transform: translateY(-3px);
+      }
+
+      .footer-bottom {
+        text-align: center;
+        padding-top: 1.5rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        color: #bbb;
+        font-size: 0.9rem;
+      }
+
+      /* Partners Section */
+      .partners-container {
+        text-align: center;
+        padding: 2rem;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 15px;
+      }
+
+      .partners-container h3 {
+        margin-bottom: 1.5rem;
+        color: var(--dark);
+        font-size: 1.5rem;
+      }
+
+      .partners-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.5rem;
+      }
+
+      .partner-item {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: all 0.3s ease;
+      }
+
+      .partner-item img {
+        width: 80px;
+        height: 80px;
+        object-fit: contain;
+        filter: grayscale(100%);
+        opacity: 0.8;
+        transition: all 0.3s ease;
+      }
+
+      .partner-item:hover img {
+        filter: grayscale(0%);
+        opacity: 1;
+        transform: scale(1.1);
+      }
+
+      .partner-tooltip {
+        position: absolute;
+        bottom: -30px;
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: var(--dark);
+        color: white;
+        padding: 5px 10px;
+        border-radius: 5px;
+        font-size: 0.8rem;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease;
+        white-space: nowrap;
+      }
+
+      .partner-item:hover .partner-tooltip {
+        opacity: 1;
+        visibility: visible;
+        bottom: -40px;
+      }
+
+      /* Animations */
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      @keyframes slideInUp {
+        from {
+          transform: translateY(50px);
+          opacity: 0;
+        }
+        to {
+          transform: translateY(0);
+          opacity: 1;
+        }
+      }
+
+      .animate-up {
+        animation: slideInUp 0.8s ease forwards;
+      }
+
+      .delay-1 {
+        animation-delay: 0.2s;
+      }
+
+      .delay-2 {
+        animation-delay: 0.4s;
+      }
+
+      .delay-3 {
+        animation-delay: 0.6s;
+      }
+
+      /* Tire Icon Animation */
+      .tire-icon {
+        font-size: 2rem;
+        color: var(--primary);
+        animation: rotate 5s linear infinite;
+        display: inline-block;
+      }
+
+      @keyframes rotate {
+        from {
+          transform: rotate(0deg);
+        }
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
+      /* Responsive Styles */
+      @media (max-width: 992px) {
+        .about-container,
+        .ceo-container,
+        .charity-container,
+        .contact-container {
+          grid-template-columns: 1fr;
+        }
+
+        .about-image,
+        .charity-image,
+        .ceo-image {
+          order: -1;
+        }
+
+        .hero-content h1 {
+          font-size: 2.8rem;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .mobile-menu-btn {
+          display: block;
+        }
+
+        nav {
+          position: fixed;
+          top: 80px;
+          left: -100%;
+          width: 80%;
+          height: calc(100vh - 80px);
+          background-color: var(--dark);
+          transition: all 0.3s ease;
+          z-index: 999;
+          padding: 2rem;
+          box-shadow: 5px 0 15px rgba(0, 0, 0, 0.1);
+        }
+
+        nav.active {
+          left: 0;
+        }
+
+        nav ul {
+          flex-direction: column;
+        }
+
+        nav ul li {
+          margin: 1rem 0;
+        }
+
+        .dropdown-content {
+          position: static;
+          display: none;
+          box-shadow: none;
+          background-color: transparent;
+        }
+
+        .dropdown:hover .dropdown-content {
+          display: none;
+        }
+
+        .dropdown.active .dropdown-content {
+          display: block;
+        }
+
+        .hero-content h1 {
+          font-size: 2.5rem;
+        }
+
+        .btn {
+          display: block;
+          width: 100%;
+          margin-bottom: 1rem;
+        }
+
+        .btn-outline {
+          margin-left: 0;
+        }
+
+        .stats {
+          grid-template-columns: 1fr;
+        }
+
+        /* CEO Section Responsive */
+        .ceo-container {
+          grid-template-columns: 1fr;
+          gap: 2rem;
+        }
+
+        .ceo-image {
+          width: 250px;
+          height: 250px;
+          margin-bottom: 2rem;
+        }
+
+        .ceo-content {
+          text-align: center;
+        }
+
+        .ceo-social {
+          justify-content: center;
+        }
+      }
+
+      @media (max-width: 576px) {
+        .hero-content h1 {
+          font-size: 2rem;
+        }
+
+        .hero-content p {
+          font-size: 1rem;
+        }
+
+        .section-title h2 {
+          font-size: 2rem;
+        }
+
+        .service-card {
+          padding: 1.5rem;
+        }
+
+        /* Team Section Responsive */
+        .team-image {
+          height: 300px;
+        }
+
+        .team-stats {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header -->
+    <header id="header">
+      <div class="header-container">
+        <div class="logo-container">
+          <img
+            src="images/Comp's worked with/FelixMotors_Logo-removebg-preview.png"
+            alt="Felix Engineering Motors Logo"
+          />
+          <div class="logo-text">FELIX <span>ENGINEERING</span></div>
+        </div>
+
+        <button class="mobile-menu-btn" id="mobileMenuBtn">
+          <i class="fas fa-bars"></i>
+        </button>
+
+        <!-- Update this in your header navigation -->
+        <nav id="nav">
+          <ul>
+            <li>
+              <a href="#home"><i class="fas fa-home"></i> Home</a>
+            </li>
+            <li>
+              <a href="#services"><i class="fas fa-tools"></i> Services</a>
+            </li>
+            <li>
+              <a href="#about"><i class="fas fa-info-circle"></i> About</a>
+            </li>
+            <li class="dropdown">
+              <a href="#"
+                ><i class="fas fa-users"></i> Team
+                <i class="fas fa-chevron-down"></i
+              ></a>
+              <div class="dropdown-content">
+                <a href="#ceo"><i class="fas fa-user-tie"></i> CEO</a>
+                <a href="#team"><i class="fas fa-users"></i> Our Family</a>
+              </div>
+            </li>
+            <li>
+              <a href="charity.html"
+                ><i class="fas fa-hand-holding-heart"></i> Charity</a
+              >
+            </li>
+            <!-- Updated link -->
+            <li>
+              <a href="#contact"><i class="fas fa-envelope"></i> Contact</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+      <div class="hero-content animate__animated animate__fadeIn">
+        <h1 class="animate-up">Premium Auto Repair Services</h1>
+        <p class="animate-up delay-1">
+          Your trusted partner for all automotive engineering needs. Quality
+          service with a personal touch.
+        </p>
+        <div class="animate-up delay-2">
+          <a href="#contact" class="btn">Get a Quote</a>
+          <a href="#services" class="btn btn-outline">Our Services</a>
+        </div>
+        <div class="animate-up delay-3" style="margin-top: 2rem">
+          <i class="fas fa-tire tire-icon"></i>
+          <span style="margin-left: 10px"
+            >24/7 Emergency Services Available</span
+          >
+        </div>
+      </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="section" id="services">
+      <div class="section-title">
+        <h2>Our Services</h2>
+        <p>
+          We offer comprehensive automotive repair and maintenance services to
+          keep your vehicle running smoothly.
+        </p>
+      </div>
+
+      <div class="services-grid">
+        <div class="service-card glass animate__animated animate__fadeInUp">
+          <div class="service-icon">
+            <i class="fas fa-car-crash"></i>
+          </div>
+          <h3>Collision Repair</h3>
+          <p>
+            Expert repair services for all types of collision damage, restoring
+            your vehicle to its pre-accident condition.
+          </p>
+          <a href="#contact" class="btn">Learn More</a>
+        </div>
+
+        <div class="service-card glass animate__animated animate__fadeInUp">
+          <div class="service-icon">
+            <i class="fas fa-oil-can"></i>
+          </div>
+          <h3>Engine Services</h3>
+          <p>
+            Complete engine diagnostics, repairs, and maintenance to ensure
+            optimal performance and longevity.
+          </p>
+          <a href="#contact" class="btn">Learn More</a>
+        </div>
+
+        <div class="service-card glass animate__animated animate__fadeInUp">
+          <div class="service-icon">
+            <i class="fas fa-tachometer-alt"></i>
+          </div>
+          <h3>Performance Upgrade</h3>
+          <p>
+            Enhance your vehicle's performance with our specialized tuning and
+            upgrade services.
+          </p>
+          <a href="#contact" class="btn">Learn More</a>
+        </div>
+
+        <div class="service-card glass animate__animated animate__fadeInUp">
+          <div class="service-icon">
+            <i class="fas fa-battery-full"></i>
+          </div>
+          <h3>Electrical Systems</h3>
+          <p>
+            Diagnosis and repair of all electrical components, from batteries to
+            complex wiring systems.
+          </p>
+          <a href="#contact" class="btn">Learn More</a>
+        </div>
+
+        <div class="service-card glass animate__animated animate__fadeInUp">
+          <div class="service-icon">
+            <i class="fas fa-fan"></i>
+          </div>
+          <h3>AC & Heating</h3>
+          <p>
+            Keep comfortable in all seasons with our professional air
+            conditioning and heating system services.
+          </p>
+          <a href="#contact" class="btn">Learn More</a>
+        </div>
+
+        <div class="service-card glass animate__animated animate__fadeInUp">
+          <div class="service-icon">
+            <i class="fas fa-car-side"></i>
+          </div>
+          <h3>Preventive Maintenance</h3>
+          <p>
+            Regular maintenance packages to prevent costly repairs and extend
+            your vehicle's lifespan.
+          </p>
+          <a href="#contact" class="btn">Learn More</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <!-- About Section - Modified -->
+    <section class="section about" id="about">
+      <div class="about-container">
+        <div class="about-content">
+          <h2>About Felix Engineering Motors</h2>
+          <p>
+            Founded in 2010, Felix Engineering Motors has grown from a small
+            local garage to one of the most trusted auto repair service
+            providers in the region. Our commitment to excellence and customer
+            satisfaction sets us apart.
+          </p>
+          <p>
+            We use only the highest quality parts and the latest diagnostic
+            equipment to ensure your vehicle receives the best possible care.
+            Our certified technicians undergo regular training to stay updated
+            with the latest automotive technologies.
+          </p>
+
+          <div class="stats">
+            <div class="stat-item glass">
+              <h3>12+</h3>
+              <p>Years Experience</p>
+            </div>
+            <div class="stat-item glass">
+              <h3>5,000+</h3>
+              <p>Vehicles Repaired</p>
+            </div>
+            <div class="stat-item glass">
+              <h3>98%</h3>
+              <p>Customer Satisfaction</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="partners-container">
+          <h3>Our Trusted Partners</h3>
+          <div class="partners-grid">
+            <div class="partner-item">
+              <img
+                src="images/Comp's worked with/AirtelTigo.png"
+                alt="AirtelTigo"
+              />
+              <span class="partner-tooltip">AirtelTigo GH</span>
+            </div>
+            <div class="partner-item">
+              <img
+                src="images/Comp's worked with/Comsys Ghna LTD.png"
+                alt="Comsys Ghna LTD"
+              />
+              <span class="partner-tooltip">Comsys Ghna LTD</span>
+            </div>
+            <div class="partner-item">
+              <img
+                src="images/Comp's worked with/First Atlantic Bank.png"
+                alt="First Atlantic Bank"
+              />
+              <span class="partner-tooltip">First Atlantic Bank</span>
+            </div>
+            <div class="partner-item">
+              <img
+                src="images/Comp's worked with/LeasAfric Ghana.png"
+                alt="LeasAfric Ghana"
+              />
+              <span class="partner-tooltip">LeasAfric Ghana</span>
+            </div>
+            <div class="partner-item">
+              <img
+                src="images/Comp's worked with/OakwoodGreen-removebg-preview 1.png"
+                alt="OakwoodGreen"
+              />
+              <span class="partner-tooltip">OakwoodGreen</span>
+            </div>
+            <div class="partner-item">
+              <img src="images/Comp's worked with/K-Net.png" alt="K-Net" />
+              <span class="partner-tooltip">K-Net</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CEO Section - Redesigned -->
+    <section class="ceo-section" id="ceo">
+      <div class="ceo-container">
+        <div class="ceo-content">
+          <h2>Message From Our Founder</h2>
+          <p>
+            "At Felix Engineering Motors, we don't just repair cars - we build
+            relationships. Every vehicle that comes through our doors is treated
+            with the same care and attention we would give our own. Our success
+            comes from combining technical excellence with genuine care for our
+            customers."
+          </p>
+          <p>
+            "What started as a small garage with a dream has grown into a
+            thriving automotive service center, but our core values remain the
+            same: integrity, quality, and community."
+          </p>
+          <div class="ceo-signature">
+            <p>Mr. Felix Messan Nyagblondzro</p>
+            <p>Founder & CEO</p>
+          </div>
+          <div class="ceo-social">
+            <a href="https://linkedin.com/your-profile"
+              ><i class="fab fa-linkedin-in"></i
+            ></a>
+            <a href="https://twitter.com/your-handle"
+              ><i class="fab fa-twitter"></i
+            ></a>
+            <a href="mailto:your-email@example.com"
+              ><i class="fas fa-envelope"></i
+            ></a>
+          </div>
+        </div>
+
+        <div class="ceo-image">
+          <img src="images/Stuffs/Boss9.jpg" alt="Felix Messan - CEO" />
+        </div>
+      </div>
+    </section>
+
+    <!-- Team Section - Redesigned -->
+    <section class="section team" id="team">
+      <div class="section-title">
+        <h2>Our Family</h2>
+        <p>
+          The dedicated team behind Felix Engineering Motors - more than
+          colleagues, we're a family committed to excellence in automotive
+          service.
+        </p>
+      </div>
+
+      <div class="team-container">
+        <div class="team-image">
+          <img
+            src="images/charity works/work group 2.jpeg"
+            alt="Felix Engineering Motors Team"
+          />
+        </div>
+
+        <div class="team-content">
+          <p>
+            Our team of certified technicians and service professionals brings
+            together decades of combined experience in the automotive industry.
+            What unites us is our shared passion for solving complex mechanical
+            challenges and delivering exceptional customer service.
+          </p>
+          <p>
+            We invest heavily in continuous training and the latest diagnostic
+            equipment to ensure we can handle any vehicle repair or maintenance
+            need with precision and efficiency.
+          </p>
+
+          <div class="team-stats">
+            <div class="team-stat glass">
+              <h3>25+</h3>
+              <p>Certified Technicians</p>
+            </div>
+            <div class="team-stat glass">
+              <h3>150+</h3>
+              <p>Years Combined Experience</p>
+            </div>
+            <div class="team-stat glass">
+              <h3>500+</h3>
+              <p>Hours Annual Training</p>
+            </div>
+            <div class="team-stat glass">
+              <h3>24/7</h3>
+              <p>Emergency Support</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Charity Preview Section in index.html -->
+    <section class="section charity-preview">
+      <div class="section-title">
+        <h2>Our Humanitarian Work</h2>
+        <p>Making a difference beyond automotive services</p>
+      </div>
+
+      <div class="charity-cards">
+        <div class="charity-card glass">
+          <i class="fas fa-utensils"></i>
+          <h3>Food Aid</h3>
+          <p>Providing meals to underprivileged communities</p>
+        </div>
+
+        <div class="charity-card glass">
+          <i class="fas fa-book-medical"></i>
+          <h3>Health Care</h3>
+          <p>Free medical checkups and medications</p>
+        </div>
+
+        <div class="charity-card glass">
+          <i class="fas fa-school"></i>
+          <h3>Education</h3>
+          <p>Building schools and providing scholarships</p>
+        </div>
+      </div>
+
+      <div class="text-center" style="margin-top: 2rem">
+        <a href="charity.html" class="btn charity-btn"
+          >Learn About Our Causes</a
+        >
+      </div>
+    </section>
+    <!-- Contact Section - Modified -->
+    <section class="section contact" id="contact">
+      <div class="section-title">
+        <h2>Contact Us</h2>
+        <p>
+          Get in touch with our team for any inquiries or to schedule an
+          appointment.
+        </p>
+      </div>
+
+      <div class="contact-container">
+        <div class="contact-info">
+          <div class="contact-item">
+            <div class="contact-icon">
+              <i class="fas fa-map-marker-alt"></i>
+            </div>
+            <div class="contact-details">
+              <h3>Location</h3>
+              <p>FELIX MOTORS. P.O.BOX GP 561</p>
+
+              <p>HALL STREET, ORDONA-ADABRAKA, ACCRA.</p>
+            </div>
+          </div>
+
+          <div class="contact-item">
+            <div class="contact-icon">
+              <i class="fas fa-phone-alt"></i>
+            </div>
+            <div class="contact-details">
+              <h3>Phone</h3>
+              <p><a href="tel:0303973617">(+233) 0303971945</a></p>
+              <p><a href="tel:0303971945">(+233) 0303971945</a></p>
+              <p>
+                <a href="tel:+233 0275499932">(+233) 0275499932</a> (Whatsap)
+              </p>
+            </div>
+          </div>
+
+          <div class="contact-item">
+            <div class="contact-icon">
+              <i class="fas fa-envelope"></i>
+            </div>
+            <div class="contact-details">
+              <h3>Email</h3>
+              <p>
+                <a href="mailto:info@felixmotors.com"
+                  >felixmotorsgh@gmail.com</a
+                >
+              </p>
+            </div>
+          </div>
+
+          <div class="contact-item">
+            <div class="contact-icon">
+              <i class="fas fa-clock"></i>
+            </div>
+            <div class="contact-details">
+              <h3>Working Hours</h3>
+              <p>Monday - Friday: 8:00 AM - 6:00 PM</p>
+              <p>Saturday: 9:00 AM - 4:00 PM</p>
+              <p>Emergency Services: 24/7</p>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="contact-form glass"
+          style="height: fit-content; align-self: center"
+        >
+          <form id="contactForm">
+            <div class="form-group">
+              <label for="name">Your Name</label>
+              <input type="text" id="name" name="name" required />
+            </div>
+
+            <div class="form-group">
+              <label for="email">Your Email</label>
+              <input type="email" id="email" name="email" required />
+            </div>
+
+            <div class="form-group">
+              <label for="phone">Phone Number</label>
+              <input type="tel" id="phone" name="phone" />
+            </div>
+
+            <div class="form-group">
+              <label for="service">Service Needed</label>
+              <select id="service" name="service" class="form-group input">
+                <option value="">Select a service</option>
+                <option value="collision">Collision Repair</option>
+                <option value="engine">Engine Services</option>
+                <option value="performance">Performance Upgrade</option>
+                <option value="electrical">Electrical Systems</option>
+                <option value="ac">AC & Heating</option>
+                <option value="maintenance">Preventive Maintenance</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="message">Message</label>
+              <textarea
+                id="message"
+                name="message"
+                required
+                class="compact-textarea"
+              ></textarea>
+            </div>
+
+            <button type="submit" class="btn compact-btn">Send</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- Map Section -->
+    <section class="map-section">
+      <div class="map-container">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d22464.1087564466!2d-0.2208716419119475!3d5.5476020878584915!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xfdf91344147bd23%3A0xcaf8d32186c46497!2sFelix%20Motors!5e0!3m2!1sen!2sch!4v1752264388489!5m2!1sen!2sch"
+          width="600"
+          height="450"
+          style="border: 0"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+        ></iframe>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <div class="footer-container">
+        <div class="footer-col">
+          <div class="logo-container">
+            <img
+              src="images/Comp's worked with/FelixMotors_Logo-removebg-preview.png"
+              alt="Felix Engineering Motors Logo"
+              style="height: 40px"
+            />
+            <div class="logo-text" style="color: var(--light)">
+              FELIX <span style="color: var(--primary)">ENGINEERING</span>
+            </div>
+          </div>
+          <p>
+            Your trusted partner for premium automotive repair and maintenance
+            services since 2010.
+          </p>
+          <div class="footer-social">
+            <a href="https://www.facebook.com/FelixmotorsEngineeringService/"
+              ><i class="fab fa-facebook-f"></i
+            ></a>
+            <a href="https://twitter.com/your-handle"
+              ><i class="fab fa-twitter"></i
+            ></a>
+            <a href="https://instagram.com/your-profile"
+              ><i class="fab fa-instagram"></i
+            ></a>
+            <a href="https://linkedin.com/company/your-company"
+              ><i class="fab fa-linkedin-in"></i
+            ></a>
+            <a href="https://www.youtube.com/@felixmotors7419"
+              ><i class="fab fa-youtube"></i
+            ></a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h3>Quick Links</h3>
+          <ul class="footer-links">
+            <li>
+              <a href="#home"><i class="fas fa-chevron-right"></i> Home</a>
+            </li>
+            <li>
+              <a href="#services"
+                ><i class="fas fa-chevron-right"></i> Services</a
+              >
+            </li>
+            <li>
+              <a href="#about"><i class="fas fa-chevron-right"></i> About Us</a>
+            </li>
+            <li>
+              <a href="#ceo"><i class="fas fa-chevron-right"></i> Our CEO</a>
+            </li>
+            <li>
+              <a href="#team"
+                ><i class="fas fa-chevron-right"></i> Our Family</a
+              >
+            </li>
+            <li>
+              <a href="charity.html"
+                ><i class="fas fa-chevron-right"></i> Charity</a
+              >
+            </li>
+            <li>
+              <a href="#contact"
+                ><i class="fas fa-chevron-right"></i> Contact</a
+              >
+            </li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h3>Our Services</h3>
+          <ul class="footer-links">
+            <li>
+              <a href="#"
+                ><i class="fas fa-chevron-right"></i> Collision Repair</a
+              >
+            </li>
+            <li>
+              <a href="#"
+                ><i class="fas fa-chevron-right"></i> Engine Services</a
+              >
+            </li>
+            <li>
+              <a href="#"
+                ><i class="fas fa-chevron-right"></i> Performance Upgrade</a
+              >
+            </li>
+            <li>
+              <a href="#"
+                ><i class="fas fa-chevron-right"></i> Electrical Systems</a
+              >
+            </li>
+            <li>
+              <a href="#"><i class="fas fa-chevron-right"></i> AC & Heating</a>
+            </li>
+            <li>
+              <a href="#"
+                ><i class="fas fa-chevron-right"></i> Preventive Maintenance</a
+              >
+            </li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h3>Newsletter</h3>
+          <p>
+            Subscribe to our newsletter for the latest updates and special
+            offers.
+          </p>
+          <form class="newsletter-form">
+            <div class="form-group" style="margin-bottom: 1rem">
+              <input type="email" placeholder="Your Email Address" required />
+            </div>
+            <button type="submit" class="btn">Subscribe</button>
+          </form>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>
+          &copy; 2023 Felix Engineering Motors. All Rights Reserved. | Designed
+          with <i class="fas fa-heart" style="color: var(--primary)"></i> by
+          Felix Team
+        </p>
+      </div>
+    </footer>
+
+    <script>
+      // Mobile Menu Toggle
+      const mobileMenuBtn = document.getElementById("mobileMenuBtn");
+      const nav = document.getElementById("nav");
+
+      mobileMenuBtn.addEventListener("click", () => {
+        nav.classList.toggle("active");
+      });
+
+      // Dropdown menu for mobile
+      const dropdowns = document.querySelectorAll(".dropdown");
+
+      dropdowns.forEach((dropdown) => {
+        const link = dropdown.querySelector("a");
+
+        link.addEventListener("click", (e) => {
+          if (window.innerWidth <= 768) {
+            e.preventDefault();
+            dropdown.classList.toggle("active");
+          }
+        });
+      });
+
+      // Update your mobile menu script
+      const navLinks = document.querySelectorAll(
+        "nav ul li a:not(.dropdown a)"
+      );
+
+      navLinks.forEach((link) => {
+        link.addEventListener("click", () => {
+          // Only close menu if it's not the charity link
+          if (
+            link.getAttribute("href") !== "charity.html" &&
+            window.innerWidth <= 768
+          ) {
+            nav.classList.remove("active");
+          }
+        });
+      });
+
+      // Header scroll effect
+      const header = document.getElementById("header");
+
+      window.addEventListener("scroll", () => {
+        if (window.scrollY > 50) {
+          header.classList.add("header-scrolled");
+        } else {
+          header.classList.remove("header-scrolled");
+        }
+      });
+
+      // Smooth scrolling for anchor links
+      // Update your existing smooth scrolling script
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        // Skip the charity link
+        if (anchor.getAttribute("href") !== "charity.html") {
+          anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+
+            const targetId = this.getAttribute("href");
+            if (targetId === "#") return;
+
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+              window.scrollTo({
+                top: targetElement.offsetTop - 80,
+                behavior: "smooth",
+              });
+            }
+          });
+        }
+      });
+
+      // Animation on scroll
+      const animateElements = document.querySelectorAll(".animate-up");
+
+      const animateOnScroll = () => {
+        animateElements.forEach((element) => {
+          const elementPosition = element.getBoundingClientRect().top;
+          const windowHeight = window.innerHeight;
+
+          if (elementPosition < windowHeight - 100) {
+            element.classList.add("animate-up");
+          }
+        });
+      };
+
+      window.addEventListener("scroll", animateOnScroll);
+      window.addEventListener("load", animateOnScroll);
+    </script>
+  </body>
+</html>

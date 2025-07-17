@@ -1,0 +1,893 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Felix Engineering Motors - Humanitarian Work</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <style>
+      :root {
+        --primary: #e63946;
+        --secondary: #f1faee;
+        --dark: #1d3557;
+        --light: #ffffff;
+        --accent: #a8dadc;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
+
+      body {
+        background-color: var(--secondary);
+        color: var(--dark);
+      }
+
+      /* Header Styles - Matching main site */
+      .charity-header {
+        background: linear-gradient(135deg, var(--dark), var(--primary));
+        color: var(--light);
+        padding: 1rem 2rem;
+        position: fixed;
+        width: 100%;
+        z-index: 1000;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      }
+
+      .header-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .logo-container {
+        display: flex;
+        align-items: center;
+      }
+
+      .logo-container img {
+        height: 100px;
+        margin-right: 10px;
+      }
+
+      .logo-text {
+        font-size: 1.5rem;
+        font-weight: 700;
+      }
+
+      .logo-text span {
+        color: var(--primary);
+      }
+
+      /* Add this to your charity.css or in the style tag of charity.html */
+
+      /* Header Navigation Styles */
+      .charity-header nav ul {
+        display: flex;
+        list-style: none;
+      }
+
+      .charity-header nav ul li {
+        margin-left: 1.5rem;
+        position: relative;
+      }
+
+      .charity-header nav ul li a {
+        color: var(--light);
+        text-decoration: none;
+        font-weight: 500;
+        font-size: 1rem;
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+        padding: 0.5rem 0;
+        position: relative;
+      }
+
+      .charity-header nav ul li a:hover {
+        color: var(--accent);
+      }
+
+      .charity-header nav ul li a.active {
+        color: var(--accent);
+      }
+
+      .charity-header nav ul li a i {
+        margin-right: 8px;
+        font-size: 0.9rem;
+      }
+
+      /* Mobile Menu Styles */
+      .mobile-menu-btn {
+        display: none;
+        background: none;
+        border: none;
+        color: var(--light);
+        font-size: 1.5rem;
+        cursor: pointer;
+      }
+
+      /* Responsive Styles */
+      @media (max-width: 768px) {
+        .mobile-menu-btn {
+          display: block;
+        }
+
+        .charity-header nav {
+          position: fixed;
+          top: 80px;
+          left: -100%;
+          width: 80%;
+          height: calc(100vh - 80px);
+          background-color: var(--dark);
+          transition: all 0.3s ease;
+          padding: 2rem;
+        }
+
+        .charity-header nav.active {
+          left: 0;
+        }
+
+        .charity-header nav ul {
+          flex-direction: column;
+        }
+
+        .charity-header nav ul li {
+          margin: 1rem 0;
+        }
+
+        .charity-header nav ul li a {
+          padding: 0.8rem 0;
+        }
+      }
+
+      /* Hero Section - Matching main site */
+      .charity-hero {
+        height: 100vh;
+        background: url("images/charity\ works/boss feeding 1.jpeg") no-repeat
+          center center/cover;
+        display: flex;
+        align-items: center;
+        position: relative;
+        padding-top: 80px;
+      }
+
+      .charity-hero::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.6);
+      }
+
+      .hero-content {
+        position: relative;
+        z-index: 1;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 2rem;
+        color: var(--light);
+        width: 100%;
+      }
+
+      .hero-content h1 {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+        text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+      }
+
+      .hero-content p {
+        font-size: 1.2rem;
+        margin-bottom: 2rem;
+        max-width: 600px;
+        text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+      }
+
+      /* Main Content */
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 3rem 2rem;
+      }
+
+      .section-title {
+        text-align: center;
+        margin-bottom: 3rem;
+      }
+
+      .section-title h2 {
+        font-size: 2.5rem;
+        color: var(--dark);
+        margin-bottom: 1rem;
+      }
+
+      .section-title p {
+        color: #666;
+        max-width: 700px;
+        margin: 0 auto;
+      }
+
+      .section-title::after {
+        content: "";
+        display: block;
+        width: 80px;
+        height: 4px;
+        background-color: var(--primary);
+        margin: 1rem auto;
+      }
+
+      /* Programs Section */
+      .programs-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+        margin: 3rem 0;
+      }
+
+      .program-card {
+        background-color: var(--light);
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      .program-image {
+        height: 200px;
+        overflow: hidden;
+      }
+
+      .program-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s ease;
+      }
+
+      .program-card:hover .program-image img {
+        transform: scale(1.05);
+      }
+
+      .program-content {
+        padding: 1.5rem;
+      }
+
+      .program-content h3 {
+        color: var(--dark);
+        margin-bottom: 1rem;
+      }
+
+      .program-content p {
+        color: #666;
+        margin-bottom: 1.5rem;
+        line-height: 1.6;
+      }
+
+      /* Gallery Section */
+      .gallery-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 1.5rem;
+        margin: 3rem 0;
+      }
+
+      .gallery-item {
+        position: relative;
+        border-radius: 8px;
+        overflow: hidden;
+        height: 200px;
+      }
+
+      .gallery-item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s ease;
+      }
+
+      .gallery-item:hover img {
+        transform: scale(1.1);
+      }
+
+      .gallery-caption {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: rgba(0, 0, 0, 0.7);
+        color: white;
+        padding: 1rem;
+        transform: translateY(100%);
+        transition: transform 0.3s ease;
+      }
+
+      .gallery-item:hover .gallery-caption {
+        transform: translateY(0);
+      }
+
+      /* Expandable Content */
+      .expandable {
+        margin: 2rem 0;
+      }
+
+      .expandable-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem;
+        background-color: var(--light);
+        border-radius: 8px;
+        cursor: pointer;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      }
+
+      .expandable-content {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease;
+        padding: 0 1rem;
+        background-color: var(--light);
+        border-radius: 0 0 8px 8px;
+      }
+
+      .expandable.active .expandable-content {
+        max-height: 500px;
+        padding: 1rem;
+        border-top: 1px solid #eee;
+      }
+
+      /* Buttons */
+      .btn {
+        display: inline-block;
+        padding: 10px 25px;
+        background-color: var(--primary);
+        color: white;
+        text-decoration: none;
+        border-radius: 30px;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        border: none;
+        cursor: pointer;
+      }
+
+      .btn:hover {
+        background-color: var(--dark);
+        transform: translateY(-3px);
+      }
+
+      .btn-outline {
+        background-color: transparent;
+        border: 2px solid var(--primary);
+        color: var(--primary);
+      }
+
+      .btn-outline:hover {
+        background-color: var(--primary);
+        color: white;
+      }
+
+      /* Footer - Matching main site */
+      footer {
+        background-color: var(--dark);
+        color: var(--light);
+        padding: 3rem 2rem 1.5rem;
+      }
+
+      .footer-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 2rem;
+        margin-bottom: 2rem;
+      }
+
+      .footer-col h3 {
+        font-size: 1.3rem;
+        margin-bottom: 1.5rem;
+        position: relative;
+        padding-bottom: 10px;
+      }
+
+      .footer-col h3::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 50px;
+        height: 2px;
+        background-color: var(--primary);
+      }
+
+      .footer-col p {
+        margin-bottom: 1rem;
+        line-height: 1.6;
+        color: #bbb;
+      }
+
+      .footer-links {
+        list-style: none;
+      }
+
+      .footer-links li {
+        margin-bottom: 0.8rem;
+      }
+
+      .footer-links a {
+        color: #bbb;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+      }
+
+      .footer-links a:hover {
+        color: var(--primary);
+        transform: translateX(5px);
+      }
+
+      .footer-links a i {
+        margin-right: 8px;
+      }
+
+      .footer-social {
+        display: flex;
+        gap: 1rem;
+        margin-top: 1.5rem;
+      }
+
+      .footer-social a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background-color: rgba(255, 255, 255, 0.1);
+        color: var(--light);
+        transition: all 0.3s ease;
+      }
+
+      .footer-social a:hover {
+        background-color: var(--primary);
+        transform: translateY(-3px);
+      }
+
+      .footer-bottom {
+        text-align: center;
+        padding-top: 1.5rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        color: #bbb;
+        font-size: 0.9rem;
+      }
+
+      /* Responsive */
+      @media (max-width: 768px) {
+        .hero-content h1 {
+          font-size: 2.5rem;
+        }
+
+        .charity-hero {
+          height: 50vh;
+        }
+      }
+
+      @media (max-width: 576px) {
+        .hero-content h1 {
+          font-size: 2rem;
+        }
+
+        .section-title h2 {
+          font-size: 2rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="charity-header">
+      <div class="header-container">
+        <div class="logo-container">
+          <img
+            src="images/Comp's worked with/FelixMotors_Logo-removebg-preview.png"
+            alt="Felix Engineering Motors Logo"
+          />
+          <div class="logo-text">FELIX <span>ENGINEERING</span></div>
+        </div>
+
+        <button class="mobile-menu-btn" id="mobileMenuBtn">
+          <i class="fas fa-bars"></i>
+        </button>
+
+        <nav id="nav">
+          <ul>
+            <li>
+              <a href="index.html"><i class="fas fa-home"></i> Home</a>
+            </li>
+            <li>
+              <a href="index.html#services"
+                ><i class="fas fa-tools"></i> Services</a
+              >
+            </li>
+            <li>
+              <a href="index.html#about"
+                ><i class="fas fa-info-circle"></i> About</a
+              >
+            </li>
+            <li>
+              <a href="index.html#team"><i class="fas fa-users"></i> Team</a>
+            </li>
+            <li>
+              <a href="#" class="active"
+                ><i class="fas fa-hand-holding-heart"></i> Charity</a
+              >
+            </li>
+            <li>
+              <a href="index.html#contact"
+                ><i class="fas fa-envelope"></i> Contact</a
+              >
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="charity-hero">
+      <div class="hero-content">
+        <h1>Wheels of Hope Initiative</h1>
+        <p>
+          Transforming lives through sustainable community programs in health,
+          education, and nourishment
+        </p>
+        <a href="#programs" class="btn">Our Programs</a>
+        <a href="index.html#contact" class="btn btn-outline">Donate Now</a>
+      </div>
+    </section>
+
+    <!-- Main Content -->
+    <div class="container">
+      <!-- Impact Section -->
+      <section>
+        <div class="section-title">
+          <h2>Making a Difference</h2>
+          <p>
+            Through our humanitarian efforts, we've impacted thousands of lives
+            in our community
+          </p>
+        </div>
+
+        <div class="programs-grid">
+          <div class="program-card">
+            <div class="program-image">
+              <img
+                src="images/charity works/feeding time 1.jpeg"
+                alt="Food Program"
+              />
+            </div>
+            <div class="program-content">
+              <h3>Nourishment Program</h3>
+              <p>
+                Providing daily meals to over 500 children in underserved
+                communities through our network of community kitchens.
+              </p>
+              <div class="expandable">
+                <div class="expandable-header">
+                  <span>Learn More</span>
+                  <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="expandable-content">
+                  <p>
+                    Our nourishment initiative operates 5 community kitchens
+                    across the region, serving over 5,000 meals monthly. We
+                    partner with local farmers to source fresh ingredients while
+                    supporting the local economy.
+                  </p>
+                  <p>
+                    The program also includes nutrition education for families
+                    and cooking workshops to promote healthy eating habits.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="program-card">
+            <div class="program-image">
+              <img
+                src="images/charity works/the ophanage people 1.jpeg"
+                alt="Health Program"
+              />
+            </div>
+            <div class="program-content">
+              <h3>Mobile Health Clinics</h3>
+              <p>
+                Bringing essential medical services to remote areas with our
+                fleet of mobile clinics staffed by volunteer professionals.
+              </p>
+              <div class="expandable">
+                <div class="expandable-header">
+                  <span>Learn More</span>
+                  <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="expandable-content">
+                  <p>
+                    Our three mobile clinics provide free medical checkups,
+                    vaccinations, and basic treatments to communities without
+                    access to healthcare facilities.
+                  </p>
+                  <p>
+                    Each clinic is equipped with examination rooms, basic lab
+                    equipment, and a pharmacy. In 2023 alone, we treated over
+                    3,000 patients.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="program-card">
+            <div class="program-image">
+              <img
+                src="images/charity works/setting up the desk boss & that 2.jpeg"
+                alt="Education Program"
+              />
+            </div>
+            <div class="program-content">
+              <h3>Education Initiative</h3>
+              <p>
+                Building schools, providing supplies, and offering scholarships
+                to bright but underprivileged students.
+              </p>
+              <div class="expandable">
+                <div class="expandable-header">
+                  <span>Learn More</span>
+                  <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="expandable-content">
+                  <p>
+                    We've constructed 2 primary schools and renovated 3 existing
+                    facilities, providing quality education to over 600 children
+                    annually.
+                  </p>
+                  <p>
+                    Our scholarship program supports 50 students each year
+                    through secondary and vocational education, with mentorship
+                    from our team.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Gallery Section -->
+      <section id="gallery">
+        <div class="section-title">
+          <h2>Charity in Action</h2>
+          <p>Moments from our humanitarian work in the community</p>
+        </div>
+
+        <div class="gallery-grid">
+          <div class="gallery-item">
+            <img
+              src="images/charity works/boss feeding 1.jpeg"
+              alt="Food Distribution"
+            />
+            <div class="gallery-caption">
+              Food distribution at our community kitchen
+            </div>
+          </div>
+
+          <div class="gallery-item">
+            <img
+              src="images/charity works/the ophanage people 2.jpeg"
+              alt="Medical Checkup"
+            />
+            <div class="gallery-caption">
+              Free medical checkup at a rural village
+            </div>
+          </div>
+
+          <div class="gallery-item">
+            <img
+              src="images/charity works/with the items 1.jpeg"
+              alt="School Opening"
+            />
+            <div class="gallery-caption">
+              Opening ceremony of our new primary school
+            </div>
+          </div>
+
+          <div class="gallery-item">
+            <img
+              src="images/charity works/solid group with boss and ophans.jpeg"
+              alt="Team Volunteering"
+            />
+            <div class="gallery-caption">
+              Our team volunteering at a community event
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="gallery-item">
+            <img
+              src="images/charity works/sitting on desk with almost everyone.jpeg"
+              alt=" The Team "
+            />
+            <div class="gallery-caption">
+              The Team
+            </div>
+          </div>
+        </div>
+      </section>
+
+      
+
+      <!-- Call to Action -->
+      <section style="text-align: center; margin: 4rem 0">
+        <h2 style="margin-bottom: 1rem">Ready to Make an Impact?</h2>
+        <p
+          style="
+            margin-bottom: 2rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+          "
+        >
+          Your support helps us continue and expand our humanitarian programs
+        </p>
+        <a
+          href="index.html#contact"
+          class="btn"
+          style="font-size: 1.1rem; padding: 12px 30px"
+          >Donate Now</a
+        >
+      </section>
+    </div>
+
+    <!-- Footer Matching Main Site -->
+    <footer>
+      <div class="footer-container">
+        <div class="footer-col">
+          <div class="logo-container">
+            <img
+              src="images/Comp's worked with/FelixMotors_Logo-removebg-preview.png"
+              alt="Felix Engineering Motors Logo"
+              style="height: 40px"
+            />
+            <div class="logo-text" style="color: var(--light)">
+              FELIX <span style="color: var(--primary)">ENGINEERING</span>
+            </div>
+          </div>
+          <p>
+            Your trusted partner for premium automotive repair and humanitarian
+            services since 2010.
+          </p>
+          <div class="footer-social">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h3>Quick Links</h3>
+          <ul class="footer-links">
+            <li>
+              <a href="index.html"><i class="fas fa-chevron-right"></i> Home</a>
+            </li>
+            <li>
+              <a href="index.html#services"
+                ><i class="fas fa-chevron-right"></i> Services</a
+              >
+            </li>
+            <li>
+              <a href="index.html#about"
+                ><i class="fas fa-chevron-right"></i> About Us</a
+              >
+            </li>
+            <li>
+              <a href="#"><i class="fas fa-chevron-right"></i> Charity</a>
+            </li>
+            <li>
+              <a href="index.html#contact"
+                ><i class="fas fa-chevron-right"></i> Contact</a
+              >
+            </li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h3>Our Programs</h3>
+          <ul class="footer-links">
+            <li>
+              <a href="#"
+                ><i class="fas fa-chevron-right"></i> Nourishment Program</a
+              >
+            </li>
+            <li>
+              <a href="#"
+                ><i class="fas fa-chevron-right"></i> Mobile Health Clinics</a
+              >
+            </li>
+            <li>
+              <a href="#"
+                ><i class="fas fa-chevron-right"></i> Education Initiative</a
+              >
+            </li>
+            <li>
+              <a href="#"
+                ><i class="fas fa-chevron-right"></i> Community Development</a
+              >
+            </li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h3>Contact Info</h3>
+          <p>
+            <i class="fas fa-map-marker-alt" style="margin-right: 10px"></i> 123
+            Charity Avenue, Accra
+          </p>
+          <p>
+            <i class="fas fa-phone-alt" style="margin-right: 10px"></i> +233 123
+            456 789
+          </p>
+          <p>
+            <i class="fas fa-envelope" style="margin-right: 10px"></i>
+            charity@felixmotors.com
+          </p>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>
+          &copy; 2023 Felix Engineering Motors. All Rights Reserved. | Designed
+          with <i class="fas fa-heart" style="color: var(--primary)"></i> by
+          Felix Team
+        </p>
+      </div>
+    </footer>
+
+    <script>
+      // Expandable content functionality
+      document.querySelectorAll(".expandable-header").forEach((header) => {
+        header.addEventListener("click", () => {
+          const expandable = header.parentElement;
+          expandable.classList.toggle("active");
+
+          const icon = header.querySelector("i");
+          if (expandable.classList.contains("active")) {
+            icon.classList.remove("fa-chevron-down");
+            icon.classList.add("fa-chevron-up");
+          } else {
+            icon.classList.remove("fa-chevron-up");
+            icon.classList.add("fa-chevron-down");
+          }
+        });
+      });
+
+      // Mobile menu toggle (if needed)
+      const mobileMenuBtn = document.querySelector(".mobile-menu-btn");
+      const nav = document.querySelector("nav");
+
+      if (mobileMenuBtn) {
+        mobileMenuBtn.addEventListener("click", () => {
+          nav.classList.toggle("active");
+        });
+      }
+    </script>
+  </body>
+</html>
